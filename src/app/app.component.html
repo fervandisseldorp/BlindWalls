@@ -17,7 +17,7 @@
 </div>
 
 <div class="hamburger-menu" [style.display]="getVisibility(0)">
-  <a href="#" class="close" (click)="changeDisplay()"></a>
+  <a href="javascript:window.location.href=window.location.href" class="close" (click)="changeDisplay()"></a>
   <ul class="hamburger-nav">
     <li [routerLink]="['/map']" class="list-item">Map</li>
     <li [routerLink]="['/route']" class="list-item">Route</li>
