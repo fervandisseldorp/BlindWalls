@@ -1,0 +1,84 @@
+.small-4 {
+  position: relative;
+  float: left;
+  min-height: 1px;
+  width: 33.3333333%;
+  padding: 48px 48px;
+}
+
+div.small-4:nth-child(-n + 3) {
+  padding-top: 0px;
+}
+
+div.small-4:nth-child(3n + 1) {
+  padding-left: 0px;
+}
+
+div.small-4:nth-child(3n) {
+  padding-right: 0px;
+}
+
+.gallery-box {
+  position: relative;
+  background-color: #ffffff;
+  color: #1e1e28;
+  overflow: hidden;
+  padding: 70px 0;
+}
+
+.gallery-box:hover {
+  background-color: #1e1e28;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.artwork {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.img-mural {
+  display: block;
+  max-width: 404px;
+  height: 303px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.artwork-overlay {
+  font-family: Playfair Display;
+  display: none;
+  position: absolute;
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  background-color: #1e1e28;
+  z-index: 100;
+}
+
+.artwork-overlay-text {
+  font-size: 40px;
+}
+
+.gallery-box:hover .artwork-overlay {
+  display: block;
+}
+
+.information-box {
+  text-align: center;
+}
+
+.title {
+  font-family: Playfair Display;
+  font-size: 40px;
+  padding: 0 30px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.other-information {
+  font-size: 15px;
+}

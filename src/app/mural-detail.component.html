@@ -1,0 +1,29 @@
+<div class="detail-page">
+  <div *ngFor="let mural of murals" class="module hero">
+
+    <div class="img-box">
+      <img class="img-start" [src]="['https://api.blindwalls.gallery/' + mural.images[0].url]" alt="">
+    </div>
+
+    <div class="information">
+      <div class="author">{{mural.author}}</div>
+      <p><strong>Locatie: - </strong> {{mural.address}}</p>
+      <p><strong>Materiaal: - </strong> {{mural.material.nl}}</p>
+      <p><strong>Jaar: - </strong> {{mural.year}}</p>
+      <p><strong>Fotografie: - </strong> {{mural.photographer}}</p>
+      <p><strong>Video: - </strong> {{mural.videoAuthor}}</p>
+    </div>
+
+    <div class="img-box">
+      <img class="img-start" [src]="['https://api.blindwalls.gallery/' + mural.images[1].url]" alt="">
+    </div>
+
+    <div class="information description-constraint">
+      <p>{{mural.description.nl}}</p>
+    </div>
+
+    <div *ngFor="let image of mural.images | slice:2; let i = index" class="img-detail-box">
+      <img class="img-detail-start" [src]="['https://api.blindwalls.gallery/' + image.url]" alt="">
+    </div>
+  </div>
+</div>

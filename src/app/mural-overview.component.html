@@ -1,0 +1,18 @@
+<div class="small-4" *ngFor="let mural of murals">
+  <div class="gallery-box" [routerLink]="['/detail', mural.id]">
+
+    <div class="artwork">
+      <img class="img-mural" [src]="['https://api.blindwalls.gallery/' + mural.images[0].url]" alt="">
+      <div class="artwork-overlay">
+        <div class="artwork-overlay-text">View Project</div>
+      </div>
+    </div>
+
+    <div class="information-box">
+      <div class="title"><strong>{{mural.title.nl}}</strong></div>
+      <div class="other-information"><strong>{{mural.address}}</strong></div>
+      <div class="other-information">No. {{mural.numberOnMap}} on map</div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "published": 1,
+    "date": 1485263473,
+    "dateModified": 1485263473,
+    "authorID": 1,
+    "latitude": 51.5839,
+    "longitude": 4.77735,
+    "address": "Stallingstraat",
+    "numberOnMap": 46,
+    "videoUrl": "https://vimeo.com/192633585",
+    "year": "2016",
+    "photographer": "Rosa Meininger, Edwin Wiekens",
+    "videoAuthor": "Stein de Bont",
+    "author": "Laura Lehtinen",
+    "rating": 4.068181818181818,
+    "title": {
+      "en": "Laura Lehtinen",
+      "nl": "Laura Lehtinen"
+    },
+    "url": {
+      "en": "",
+      "nl": ""
+    },
+    "description": {
+      "en": "The mural represents the short cycle of life, from blossom to death. Inspired by the nearby parking lot history; from vegetable garden to graveyard and the former stables at the end of the street.\n \nIllustrator Laura Lehtinen (FI) studied illustration in Barcelona, where she first got into painting walls. Nowadays she works on magazine and commercial illustration and designs installations in urban spaces. Her work is inspired by nature, traveling, hip hop and skateboarding culture, Tove Jansson (Finnish novelist, painter and illustrator), gastronomy, fashion and love.",
+      "nl": "Geïnspireerd op de geschiedenis van de nabijgelegen parkeerplaats toont de muurschildering de cyclus van het leven, van bloesem tot de dood. Ooit verrees hier een groentetuin uit een begraafplaats en draafden paarden richting de stallen aan het eind van de straat.\n \nIllustrator Laura Lehtinen (FI) studeerde in Barcelona, waar ze begon met het beschilderen van muren. Tegenwoordig maakt ze commerciële illustraties en ontwerpt ze installaties in de openbare ruimte. Haar werk is geïnspireerd door de natuur, reizen, hip hop en skateboardcultuur, Tove Jansson (Finse auteur, kunstschilder en illustrator), gastronomie, mode en liefde."
+    },
+    "material": {
+      "en": "Latex on plaster",
+      "nl": "Latex op stucwerk"
+    },
+    "category": {
+      "id": 1,
+      "en": "Blind Wall",
+      "nl": "Blind Wall"
+    },
+    "images": [
+      {
+        "url": "static/1_4.jpg",
+        "file": "static/1_4.jpg",
+        "type": "wall"
+      },
+      {
+        "url": "static/1_5.jpg",
+        "file": "static/1_5.jpg",
+        "type": "wall"
+      },
+      {
+        "url": "static/1_6.jpg",
+        "file": "static/1_6.jpg",
+        "type": "wall"
+      },
+      {
+        "url": "static/1_1.jpg",
+        "file": "static/1_1.jpg",
+        "type": "frontpage"
+      },
+      {
+        "url": "static/1_2.jpg",
+        "file": "static/1_2.jpg",
+        "type": "wall"
+      },
+      {
+        "url": "static/1_3.jpg",
+        "file": "static/1_3.jpg",
+        "type": "wall"
+      }
+    ]
+  }
+]

@@ -1,0 +1,54 @@
+.detail-page {
+  posistion: relative;
+}
+
+.img-box {
+  width: 100%;
+  background-color: #1e1e28;
+}
+
+.img-start {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  background-color: #ffffff;
+}
+
+.author {
+  font-family: 'Playfair Display', bold;
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+.information {
+  font-size: 16px;
+  text-align: center;
+  padding: 100px 0;
+}
+
+.description-constraint {
+  font-family: 'Playfair Display', bold;
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 20px;
+}
+
+.img-detail-box {
+  float: left;
+  width: 50%;
+  padding: 20px;
+  background-color: #1e1e28;
+}
+
+.img-detail-start {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  background-color: #ffffff;
+}
