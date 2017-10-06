@@ -1,4 +1,4 @@
-export class Mural {
+export interface Mural {
     id: number;
     published: number;
     date: number;
@@ -14,12 +14,12 @@ export class Mural {
     videoAuthor: string;
     author: string;
     rating: number;
-    title: Title;
-    url: Url;
-    description: Description;
-    material: Material;
-    category: Category;
-    images: Images[];
+    // title: Title;
+    // url: Url;
+    // description: Description;
+    // material: Material;
+    // category: Category;
+    // images: Images[];
 }
 
 export class Title {
