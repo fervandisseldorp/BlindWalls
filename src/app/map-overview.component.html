@@ -1,1 +1,15 @@
-<h1>Map Overview comes here</h1>
+<h1>Murals</h1>
+
+<agm-map [latitude]="51.5719" [longitude]="4.7683" [zoom]="17">
+
+  <agm-marker *ngFor="let mural of murals" [latitude]="mural.latitude" [longitude]="mural.longitude">
+    <agm-info-window>
+      <h2>{{ mural.title }} - {{ mural.address}}</h2>
+      <img [src]="['https://api.blindwalls.gallery/' + mural.images[0].url.toLowerCase()]">
+      <p>{{ mural.description }}</p>
+      <!-- Open detailview align right? -->
+      <a href="/">Read more..</a>
+    </agm-info-window>
+  </agm-marker>
+
+</agm-map>

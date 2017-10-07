@@ -15,6 +15,7 @@ export class MapOverviewComponent {
 
   constructor(private storage: AsyncLocalStorage) {
     this.storage.getItem('myMurals').subscribe((data: Mural[]) => {
+      console.log('MAP-OVERVIEW: FOUND DATA: ' + data);
       this.murals = data;
     });
   }
