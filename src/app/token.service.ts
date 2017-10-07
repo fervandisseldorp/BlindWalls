@@ -14,7 +14,7 @@ export class TokenService {
 
   constructor(private http: HttpClient) { }
 
-  getToken(): Observable<Token[]> {
+  getToken(): Observable<Token> {
 
     const body = {
       'username': 'blindwall',

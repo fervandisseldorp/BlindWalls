@@ -36,8 +36,8 @@ export class AppComponent implements OnInit {
         err => console.log(err));
 
     this.tokenService.getToken()
-      .subscribe((tokenData: Token[]) => {
-          console.log(tokenData);
+      .subscribe((tokenData: Token) => {
+          console.log(tokenData.token);
 
         this.storage.setItem('myTokens', tokenData).subscribe(() => {
           console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
