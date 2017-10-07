@@ -37,16 +37,16 @@ export class AppComponent implements OnInit {
 
     this.tokenService.getToken()
       .subscribe((tokenData: Token[]) => {
-          console.log(tokenData[0].token);
+          console.log(tokenData);
 
         this.storage.setItem('myTokens', tokenData).subscribe(() => {
           console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
-
 
           this.routesService.getRoutes()
             .subscribe((routeData: Route[]) => {
                 this.storage.setItem('myRoutes', routeData).subscribe(() => {
                   console.log('LOCAL-STORAGE: FINISHED SAVING ROUTES DATA');
+                  console.log(routeData);
                 });
               },
               err => console.log(err));

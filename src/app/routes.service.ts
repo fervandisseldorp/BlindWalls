@@ -18,7 +18,7 @@ export class RoutesService {
 
   getRoutes(): Observable<Route[]> {
 
-    const token = this.storage.getItem('myToken')[0].token;
+    const token = this.storage.getItem('myTokens');
 
     console.log('LOCAL-STORAGE: FOUND TOKEN ' + token);
 

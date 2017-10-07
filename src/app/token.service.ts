@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import {RequestOptions} from '@angular/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -16,12 +15,13 @@ export class TokenService {
   constructor(private http: HttpClient) { }
 
   getToken(): Observable<Token[]> {
+
     const body = {
-      "username": "blindwall",
-      "password": "blindwall"
+      'username': 'blindwall',
+      'password': 'blindwall'
     };
 
-    return this.http.post(this.token_url, JSON.stringify(body));
+    return this.http.post(this.token_url, body);
   }
 
 }
