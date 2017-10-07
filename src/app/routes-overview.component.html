@@ -1,20 +1,34 @@
 <h1>Routes</h1>
 <h2>Select a route</h2>
-<ul>
-  <li (click)="selectRoute(1)">Route 1</li>
-  <li (click)="selectRoute(2)">Route 2</li>
-  <li (click)="selectRoute(3)">Route 3</li>
+<ul *ngFor="let route of routes; let i = index">
+  <li (click)="selectRoute(i)">Route {{ i + 1 }}</li>
 </ul>
 <br/>
+<h3 *ngIf="travelTypes">Current route: {{ selectedRoute + 1 }} - Travel mode: {{ travelTypes[selectedRoute].toLowerCase() }}</h3>
+<h4>Traveling time: {{ routes[selectedRoute].time }}</h4>
 
-<agm-map *ngIf="generatedRoute != undefined" [latitude]="generatedRoute[0].latitude" [longitude]="generatedRoute.length.longitude" [zoom]="15">
+<div *ngIf="generatedRoutes">
+
+  <div *ngFor="let route of generatedRoutes; let i = index">
+
+      <agm-map *ngIf="selectedRoute === i" [latitude]="route[0].latitude" [longitude]="route[0].longitude" [zoom]="15">
+
+        <appSebmMap [startingPoint]="route[0]"
+                    [destination]="route[(route.length - 1)]"
+                    [wayPoints]="route"
+                    [travelMode]="travelTypes[selectedRoute]">
 
 
-  <appSebmMap *ngIf="generatedRoute.length != undefined" [startingPoint]="generatedRoute[0]" [destination]="generatedRoute[generatedRoute.length]" [wayPoints]="generatedRoute">
+        </appSebmMap>
+
+      </agm-map>
+
+  </div>
 
 
-  </appSebmMap>
 
-</agm-map>
+</div>
+
+
 
 

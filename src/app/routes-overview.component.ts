@@ -3,7 +3,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 import { Mural } from './mural';
-import { Route, Point } from './route';
+import { Route } from './route';
 
 
 @Component({
@@ -18,52 +18,64 @@ export class RoutesOverviewComponent {
 
   // List for all routes
   routes: Route[];
+  tempRoutes: Mural[] = [];
 
-  // List for all points for selected route
-  points: Point[];
-
-  // List for generated route
-  generatedRoute: Mural[];
-
-  travelType: String = 'WALK';
+  generatedRoutes: Array<Array<Mural>> = new Array<Array<Mural>>();
+  travelTypes: String[] = [];
 
   @Output() currentRoute: EventEmitter<number> = new EventEmitter<number>();
   selectedRoute = 0;
 
+
   constructor(protected storage: AsyncLocalStorage) {
-    this.generatedRoute = new Array();
 
     this.storage.getItem('myMurals').subscribe((muralsData: Mural[]) => {
+      console.log('ROUTER-OVERVIEW: Received muraldata');
       this.murals = muralsData;
     });
 
     this.storage.getItem('myRoutes').subscribe((routesData: Route[]) => {
+      console.log('ROUTER-OVERVIEW: Received routedata');
       this.routes = routesData;
-      this.points = this.routes[this.selectedRoute].points;
-
-      this.generatedRoute = this.generateRoute();
+      this.generateRoutes();
     });
-
 
   }
 
   selectRoute(selectedRouteNumber: number) {
     this.selectedRoute = selectedRouteNumber;
-    this.generateRoute();
-    this.travelType = this.routes[selectedRouteNumber - 1].type.toUpperCase();
-    console.log('Switched Route: ' + selectedRouteNumber + ' Travel type: ' + this.travelType);
+    console.log('ROUTES-OVERVIEW: Route changed to: ' + this.selectedRoute);
     this.currentRoute.emit(this.selectedRoute);
   }
 
-  generateRoute(): Mural[] {
-    const tempRoutes = new Array();
 
-    for (const p of this.points){
-      tempRoutes.push(this.murals.filter(mural => mural.id === p.muralId)[0]);
-    }
+  generateRoutes() {
+    console.log('REACHED generateRoutes()');
 
-    console.log('GenerateRoute() - Created Route size: ' + tempRoutes.length);
-    return tempRoutes;
+    this.routes.forEach((route, j) => {
+      console.log(route);
+
+      this.tempRoutes = [];
+
+      if (route.type === 'walk') {
+        this.travelTypes.push('WALKING');
+      }else {
+        this.travelTypes.push('BICYCLING');
+      }
+
+      route.points.forEach((point, k) => {
+
+        if (k === route.points.length) {
+          this.tempRoutes = [];
+        }
+
+        this.tempRoutes.push(this.murals.find(mural => mural.id === point.muralId));
+      });
+
+      console.log('GenerateRoute() - Created Route size: ' + this.tempRoutes.length + ' Pushing to: ' + j);
+      this.generatedRoutes.push(this.tempRoutes);
+
+    });
   }
 
 
