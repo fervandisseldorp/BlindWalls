@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AsyncLocalStorage } from 'angular-async-local-storage';
+
 import {MuralService} from './mural.service';
 import {Mural} from './mural';
 
@@ -9,16 +11,16 @@ import {Mural} from './mural';
   styleUrls: [ './mural-overview.component.css' ]
 })
 
-export class MuralOverviewComponent implements OnInit {
+export class MuralOverviewComponent {
   murals: Mural[];
 
-  constructor(private muralService: MuralService) { }
+  constructor(private muralService: MuralService, protected storage: AsyncLocalStorage) {
 
-  ngOnInit(): void {
-    this.muralService.getMurals()
-      .subscribe((data: Mural[]) => {
-          this.murals = data;
-        },
-        err => console.log(err));
+    this.storage.getItem('myMurals').subscribe((data: Mural[]) => {
+      this.murals = data;
+    });
+
   }
+
+
 }

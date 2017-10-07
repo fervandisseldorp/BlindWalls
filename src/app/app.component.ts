@@ -1,4 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+
+import { AsyncLocalStorage } from 'angular-async-local-storage';
+
+import {MuralService} from './mural.service';
+import {RoutesService} from './routes.service';
+import {TokenService} from './token.service';
+
+import {Mural} from './mural';
+import {Route} from './route';
+import {Token} from './token';
+
 
 @Component({
   selector: 'app-root',
@@ -6,9 +17,46 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Blind Walls Gallery';
   mDisplay = 'block';
+
+  constructor(private muralService: MuralService, private routesService: RoutesService,
+              private tokenService: TokenService, protected storage: AsyncLocalStorage) {
+
+  }
+
+  ngOnInit(): void {
+    this.muralService.getMurals()
+      .subscribe((muralData: Mural[]) => {
+          this.storage.setItem('myMurals', muralData).subscribe(() => {
+            console.log('LOCAL-STORAGE: FINISHED SAVING MURAL DATA');
+          });
+        },
+        err => console.log(err));
+
+    this.tokenService.getToken()
+      .subscribe((tokenData: Token[]) => {
+          console.log(tokenData[0].token);
+
+        this.storage.setItem('myTokens', tokenData).subscribe(() => {
+          console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
+
+
+          this.routesService.getRoutes()
+            .subscribe((routeData: Route[]) => {
+                this.storage.setItem('myRoutes', routeData).subscribe(() => {
+                  console.log('LOCAL-STORAGE: FINISHED SAVING ROUTES DATA');
+                });
+              },
+              err => console.log(err));
+
+        });
+      },
+        err => console.log(err));
+
+  }
+
 
   changeDisplay() {
     if (this.mDisplay === 'block') {
