@@ -7,6 +7,10 @@ import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {AlertModule} from 'ngx-bootstrap';
 
+// Imports for loading & configuring the in-memory web api
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+
 import {MuralDetailComponent} from './mural-detail.component';
 import {MuralService} from './mural.service';
 import {MuralOverviewComponent} from './mural-overview.component';
@@ -21,6 +25,7 @@ import {MuralOverviewComponent} from './mural-overview.component';
     AlertModule.forRoot(),
     BrowserModule,
     HttpClientModule,
+    InMemoryWebApiModule.forRoot(InMemoryDataService),
     FormsModule,
     AppRoutingModule
   ],
