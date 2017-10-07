@@ -5,7 +5,7 @@
 
     <a routerLink="/dashboard" routerLinkActive="active" class="header-logo">Blind Walls Gallery</a>
 
-    <div id="hamburger" (click)="changeDisplay();">
+    <div id="hamburger" (click)="changeDisplay()">
       <span></span>
       <span></span>
       <span></span>
@@ -17,10 +17,10 @@
 </div>
 
 <div class="hamburger-menu" [style.display]="getVisibility(0)">
-  <a href="javascript:window.location.href=window.location.href" class="close" (click)="changeDisplay()"></a>
-  <ul class="hamburger-nav">
+  <a href="javascript:window.location.href=window.location.href" class="close"></a>
+  <ul class="hamburger-nav" (click)="changeDisplay()">
     <li [routerLink]="['/map']" class="list-item">Map</li>
-    <li [routerLink]="['/route']" class="list-item">Route</li>
+    <li [routerLink]="['/routes']" class="list-item">Route</li>
     <li [routerLink]="['/muraloverview']" class="list-item">Muren</li>
   </ul>
 </div>
