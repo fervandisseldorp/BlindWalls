@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { Route } from './route';
-import { Token } from './token';
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
 @Injectable()
@@ -20,14 +19,14 @@ export class RoutesService {
 
     const token = this.storage.getItem('myTokens');
 
-    console.log('LOCAL-STORAGE: FOUND TOKEN ' + token);
+    console.log('LOCAL-STORAGE: FOUND TOKEN AT ROUTES-SERVICE ' + token);
 
     const headerObject = new Headers({
       'Content-Type': 'application/json',
       'X-Access-Token': token
     });
 
-    return this.http.get(this.routes_url);
+    return this.http.get(this.routes_url, headerObject);
   }
 
 }

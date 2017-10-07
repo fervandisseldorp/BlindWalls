@@ -27,31 +27,31 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.muralService.getMurals()
-      .subscribe((muralData: Mural[]) => {
-          this.storage.setItem('myMurals', muralData).subscribe(() => {
-            console.log('LOCAL-STORAGE: FINISHED SAVING MURAL DATA');
-          });
-        },
-        err => console.log(err));
-
     this.tokenService.getToken()
       .subscribe((tokenData: Token) => {
           console.log(tokenData.token);
 
-        this.storage.setItem('myTokens', tokenData).subscribe(() => {
-          console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
+          this.storage.setItem('myTokens', tokenData).subscribe(() => {
+            console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
 
-          this.routesService.getRoutes()
-            .subscribe((routeData: Route[]) => {
-                this.storage.setItem('myRoutes', routeData).subscribe(() => {
-                  console.log('LOCAL-STORAGE: FINISHED SAVING ROUTES DATA');
-                  console.log(routeData);
+          this.muralService.getMurals()
+            .subscribe((muralData: Mural[]) => {
+                this.storage.setItem('myMurals', muralData).subscribe(() => {
+                  console.log('LOCAL-STORAGE: FINISHED SAVING MURAL DATA');
+                  console.log(muralData);
                 });
               },
               err => console.log(err));
+            this.routesService.getRoutes()
+              .subscribe((routeData: Route[]) => {
+                  this.storage.setItem('myRoutes', routeData).subscribe(() => {
+                    console.log('LOCAL-STORAGE: FINISHED SAVING ROUTES DATA');
+                    console.log(routeData);
+                  });
+                },
+                err => console.log(err));
 
-        });
+          });
       },
         err => console.log(err));
 
