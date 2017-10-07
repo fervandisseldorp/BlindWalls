@@ -13,7 +13,7 @@ export class MapOverviewComponent {
 
   murals: Mural[];
 
-  constructor(private storage: AsyncLocalStorage) {
+  constructor(protected storage: AsyncLocalStorage) {
     this.storage.getItem('myMurals').subscribe((data: Mural[]) => {
       console.log('MAP-OVERVIEW: FOUND DATA: ' + data);
       this.murals = data;

@@ -19,7 +19,7 @@ export class RoutesOverviewComponent {
   @Output() currentRoute: EventEmitter<number> = new EventEmitter<number>();
   selectedRoute = 0;
 
-  constructor(private storage: AsyncLocalStorage) {
+  constructor(protected storage: AsyncLocalStorage) {
     this.storage.getItem('myMurals').subscribe((muralsData: Mural[]) => {
       this.murals = muralsData;
     });

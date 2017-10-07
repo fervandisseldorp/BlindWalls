@@ -1,3 +1,12 @@
 agm-map{
   height: 500px;
 }
+
+img{
+  height: 200px;
+  width: 250px;
+}
+
+agm-marker{
+  overflow:hidden;
+}
