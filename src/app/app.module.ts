@@ -20,6 +20,7 @@ import { GoogleMapsAPIWrapper } from '@agm/core/services/google-maps-api-wrapper
 import { MapsAPILoader } from '@agm/core/services/maps-api-loader/maps-api-loader';
 import { MapOverviewComponent } from './map-overview.component';
 import { RoutesOverviewComponent } from './routes-overview.component';
+import { DirectionsMapDirective } from './directions-map.directive';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { RoutesOverviewComponent } from './routes-overview.component';
     MuralDetailComponent,
     MuralOverviewComponent,
     MapOverviewComponent,
-    RoutesOverviewComponent
+    RoutesOverviewComponent,
+    DirectionsMapDirective
   ],
   imports: [
     AlertModule.forRoot(),

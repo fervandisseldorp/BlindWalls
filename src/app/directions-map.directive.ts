@@ -1,15 +1,17 @@
 import {Directive, Input, OnInit} from '@angular/core';
 
 import {GoogleMapsAPIWrapper} from '@agm/core/services/google-maps-api-wrapper';
+
+import { Mural } from './mural';
 declare var google: any;
 
 @Directive({
   selector: 'appSebmMap, [appSebmMap]'
 })
 export class DirectionsMapDirective implements OnInit {
-  @Input() startingPoint;
-  @Input() destination;
-  @Input() wayPoints;
+  @Input() startingPoint: Mural;
+  @Input() destination: Mural;
+  @Input() wayPoints: Mural[];
 
   parsedLocations: {}[] = new Array();
 
@@ -19,12 +21,15 @@ export class DirectionsMapDirective implements OnInit {
     this.gmapsApi.getNativeMap().then(map => {
       const directionsService = new google.maps.DirectionsService;
       const directionsDisplay = new google.maps.DirectionsRenderer({draggable: false});
+
       for (const p of this.wayPoints) {
-        this.parsedLocations.push({location: new google.maps.LatLng(parseFloat(p.latitude), parseFloat(p.longitude))});
+        this.parsedLocations.push({location: new google.maps.LatLng(p.latitude, p.longitude)});
         console.log('Current parsed locations size: ' + this.parsedLocations.length);
       }
-      const start = {location: new google.maps.LatLng(parseFloat(this.startingPoint.latitude), parseFloat(this.startingPoint.longitude))};
-      const end = {location: new google.maps.LatLng(parseFloat(this.destination.latitude), parseFloat(this.destination.longitude))};
+
+      const start = {location: new google.maps.LatLng(this.startingPoint.latitude, this.startingPoint.longitude)};
+      const end = {location: new google.maps.LatLng(this.destination.latitude, this.destination.longitude)};
+
       directionsDisplay.setMap(map);
       directionsDisplay.setOptions({
         polylineOptions: {
@@ -32,7 +37,7 @@ export class DirectionsMapDirective implements OnInit {
           strokeOpacity: 0.7,
           strokeColor:  '#00468c'
         },
-        suppressMarkers : true
+        suppressMarkers : false
       });
       directionsService.route({
         origin: start,

@@ -6,25 +6,15 @@
   <li (click)="selectRoute(3)">Route 3</li>
 </ul>
 <br/>
-<!--
-<agm-map [latitude]="start.latitude" [longitude]="start.longitude" [zoom]="20">
 
-  <appSebmMap [startingPoint]="start" [destination]="end" [wayPoints]="waypoints">
-    <agm-marker *ngFor="let mural of Murals" [latitude]="mural.latitude" [longitude]="mural.longitude">
-      <agm-info-window>
-        <h3>HELLO {{loc.latitude}}, {{loc.longitude}}</h3>
-        <p>Your rating: {{ currentRating }} --- Average Rating: {{ currentAverage }}</p>
-        <img src="https://kunstinbreda.files.wordpress.com/2013/01/achter-de-lange-stallen-b-1024x678.jpg?w=640&h=424">
-        <p>Lorem ipsum dinges bla bla bla bla bla bla bla</p>
-        <div (click)="rateMural(1)">Add rating: 1 </div><br />
-        <div (click)="rateMural(2)">Add rating: 2 </div><br />
-        <div (click)="rateMural(3)">Add rating: 3 </div><br />
-        <div (click)="rateMural(4)">Add rating: 4 </div><br />
-        <div (click)="rateMural(5)">Add rating: 5 </div><br />
-      </agm-info-window>
-    </agm-marker>
+<agm-map *ngIf="generatedRoute != undefined" [latitude]="generatedRoute[0].latitude" [longitude]="generatedRoute.length.longitude" [zoom]="15">
+
+
+  <appSebmMap *ngIf="generatedRoute.length != undefined" [startingPoint]="generatedRoute[0]" [destination]="generatedRoute[generatedRoute.length]" [wayPoints]="generatedRoute">
+
+
   </appSebmMap>
 
 </agm-map>
--->
+
 
