@@ -16,7 +16,7 @@
       <img [src]="['https://api.blindwalls.gallery/' + mural.images[0].url.toLowerCase()]">
       <p>{{ mural.description.en }}</p>
       <!-- Open detailview align right? -->
-      <a href="/">Read more..</a>
+      <a href="/detail/{{mural.id}}">Read more..</a>
     </agm-info-window>
   </agm-marker>
 
