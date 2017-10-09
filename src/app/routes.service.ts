@@ -14,20 +14,14 @@ export class RoutesService {
 
   constructor(private http: HttpClient, private storage: AsyncLocalStorage) { }
 
-
-  getRoutes(): Observable<Route[]> {
-
-    const token = this.storage.getItem('myTokens');
-
+  getRoutes(token: string): Observable<Route[]> {
     console.log('LOCAL-STORAGE: FOUND TOKEN AT ROUTES-SERVICE ' + token);
 
     const headerObject = new Headers({
       'Content-Type': 'application/json',
       'X-Access-Token': token
     });
-
     return this.http.get(this.routes_url, headerObject);
   }
-
 }
 

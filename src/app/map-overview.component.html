@@ -1,6 +1,13 @@
-<h1>Murals</h1>
+<div class="info-box">
+  <div class="map-header">
+    <h1>Murals</h1>
+  </div>
+</div>
 
-<!-- Link to detail too? -->
+<div class="decoration-box">  </div>
+
+<div class="map-box">
+
 <agm-map [latitude]="51.58307" [longitude]="4.7769505" [zoom]="15">
 
   <agm-marker *ngFor="let mural of murals" [latitude]="mural.latitude" [longitude]="mural.longitude">
@@ -14,3 +21,4 @@
   </agm-marker>
 
 </agm-map>
+</div>

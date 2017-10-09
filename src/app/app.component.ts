@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
           this.storage.setItem('myTokens', tokenData).subscribe(() => {
             console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
 
-          this.muralService.getMurals()
+          this.muralService.getMurals(tokenData.token)
             .subscribe((muralData: Mural[]) => {
                 this.storage.setItem('myMurals', muralData).subscribe(() => {
                   console.log('LOCAL-STORAGE: FINISHED SAVING MURAL DATA');
@@ -42,7 +42,7 @@ export class AppComponent implements OnInit {
                 });
               },
               err => console.log(err));
-            this.routesService.getRoutes()
+            this.routesService.getRoutes(tokenData.token)
               .subscribe((routeData: Route[]) => {
                   this.storage.setItem('myRoutes', routeData).subscribe(() => {
                     console.log('LOCAL-STORAGE: FINISHED SAVING ROUTES DATA');

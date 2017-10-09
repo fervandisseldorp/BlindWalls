@@ -1,3 +1,23 @@
+.info-box {
+  padding: 20px;
+}
+
+.map-header {
+  text-align: center;
+}
+
+.map-header h1 {
+  font-size: 106px;
+  font-family: Playfair Display, bold;
+  color: #1e1e28;
+}
+
+.map-box {
+  background-color: #1e1e28;
+  padding: 60px;
+}
+
+
 agm-map{
   height: 500px;
 }
@@ -9,4 +29,14 @@ img{
 
 agm-marker{
   overflow:hidden;
+}
+
+@media (max-width: 641px) {
+  .map-header h1 {
+    font-size: 60px;
+  }
+
+  .map-box {
+    padding: 10px;
+  }
 }

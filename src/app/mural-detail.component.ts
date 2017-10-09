@@ -1,7 +1,9 @@
+import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 
 import {MuralService} from './mural.service';
 import {Mural} from './mural';
+import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
   selector: 'app-mural-detail',
@@ -11,14 +13,15 @@ import {Mural} from './mural';
 
 export class MuralDetailComponent implements OnInit {
   murals: Mural[];
+  mural: Mural;
 
-  constructor(private muralService: MuralService) { }
+  constructor(private muralService: MuralService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.muralService.getMural()
-      .subscribe((data: Mural[]) => {
-          this.murals = data;
-        },
-        err => console.log(err));
+    this.route.paramMap
+      .switchMap((params: ParamMap) => this.muralService.getMural(+params.get('id')))
+      .subscribe((data: Mural) => {
+        this.mural = data;
+      });
   }
 }

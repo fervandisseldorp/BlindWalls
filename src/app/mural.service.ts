@@ -5,7 +5,6 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import {Mural} from './mural';
-import {Token} from './token';
 import {AsyncLocalStorage} from 'angular-async-local-storage';
 
 
@@ -14,13 +13,9 @@ export class MuralService {
 
   private mural_url = 'https://api.blindwalls.gallery/apiv2/murals';
 
-  constructor(private http: HttpClient, private storage: AsyncLocalStorage) {
+  constructor(private http: HttpClient, private storage: AsyncLocalStorage) { }
 
-  }
-
-  getMurals(): Observable<Mural[]> {
-    const token = this.storage.getItem('myTokens');
-
+  getMurals(token: string): Observable<Mural[]> {
     console.log('LOCAL-STORAGE: FOUND TOKEN AT MURAL-SERVICE ' + token);
 
     const headerObject = new Headers({
@@ -31,8 +26,11 @@ export class MuralService {
     return this.http.get(this.mural_url, headerObject);
   }
 
-  getMural(): Observable<Mural[]> {
-    return this.http.get('/assets/mural.json');
+  getMural(id: number) {
+    return this.storage.getItem('myMurals')
+      .map(murals => {
+        return murals.find(m => m.id === id);
+      });
   }
 }
 

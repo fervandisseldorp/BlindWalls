@@ -1,3 +1,10 @@
 body {
   font-family: 'Playfair Display', serif;
 }
+
+.decoration-box {
+  background-color: #1e1e28;
+  width: 100px;
+  height: 30px;
+  margin: 60px auto 60px auto;
+}

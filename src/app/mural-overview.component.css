@@ -1,21 +1,15 @@
+.murals-box {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
 .small-4 {
   position: relative;
   float: left;
   min-height: 1px;
   width: 33.3333333%;
   padding: 48px 48px;
-}
-
-div.small-4:nth-child(-n + 3) {
-  padding-top: 0px;
-}
-
-div.small-4:nth-child(3n + 1) {
-  padding-left: 0px;
-}
-
-div.small-4:nth-child(3n) {
-  padding-right: 0px;
 }
 
 .gallery-box {
@@ -81,4 +75,51 @@ div.small-4:nth-child(3n) {
 
 .other-information {
   font-size: 15px;
+}
+
+@media (min-width: 1600px) {
+  div.small-4:nth-child(-n + 3) {
+    padding-top: 0px;
+  }
+
+  div.small-4:nth-child(3n + 1) {
+    padding-left: 0px;
+  }
+
+  div.small-4:nth-child(3n) {
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 1600px) {
+  .small-4 {
+    width: 50%;
+  }
+
+  div.small-4:nth-child(-n + 2) {
+    padding-top: 0px;
+  }
+
+  div.small-4:nth-child(2n + 1) {
+    padding-left: 0px;
+  }
+
+  div.small-4:nth-child(2n) {
+    padding-right: 0px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .small-4 {
+    width: 100%;
+  }
+
+  div.small-4:nth-child(-n + 1) {
+    padding-top: 0px;
+  }
+
+  div.small-4:nth-child(n) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }

@@ -1,5 +1,5 @@
 <div class="detail-page">
-  <div *ngFor="let mural of murals" class="module hero">
+  <div>
 
     <div class="img-box">
       <img class="img-start" [src]="['https://api.blindwalls.gallery/' + mural.images[0].url.toLowerCase()]" alt="">
@@ -22,8 +22,10 @@
       <p>{{mural.description.nl}}</p>
     </div>
 
-    <div *ngFor="let image of mural.images | slice:2; let i = index" class="img-detail-box">
-      <img class="img-detail-start" [src]="['https://api.blindwalls.gallery/' + image.url.toLowerCase()]" alt="">
+    <div class="box">
+      <div *ngFor="let image of mural.images | slice:2; let i = index" class="img-detail-box">
+        <img class="img-detail-start" [src]="['https://api.blindwalls.gallery/' + image.url.toLowerCase()]" alt="">
+      </div>
     </div>
   </div>
 </div>

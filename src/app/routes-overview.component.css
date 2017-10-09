@@ -1,3 +1,59 @@
+.info-box {
+  padding: 20px;
+}
+
+.routes-header {
+  text-align: center;
+}
+
+.routes-header h1 {
+  font-size: 106px;
+  font-family: Playfair Display, bold;
+  color: #1e1e28;
+}
+
+.selection-box {
+  text-align: center;
+  padding: 40px;
+}
+
+.selection-box h2 {
+  font-size: 40px;
+  color: #1e1e28;
+  font-family: Playfair Display;
+}
+
+.selection-box .routes {
+  font-size: 20px;
+  margin: 0;
+  padding: 10px 0 0 0;
+  text-decoration: underline;
+}
+
+.selection-box .routes:hover {
+  color: #9d9d9d;
+  cursor: pointer;
+}
+
+.map-box {
+  background-color: #1e1e28;
+  padding: 60px;
+}
+
 agm-map{
   height: 500px;
+}
+
+h3 {
+  color: #ffffff;
+}
+
+h5 {
+  color: #d2d2d2;
+}
+
+@media (max-width: 641px) {
+  .routes-header h1 {
+    font-size: 60px;
+  }
 }

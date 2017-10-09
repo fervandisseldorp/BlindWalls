@@ -1,34 +1,47 @@
-<h1>Routes</h1>
-<h2>Select a route</h2>
-<ul *ngFor="let route of routes; let i = index">
-  <li (click)="selectRoute(i)">Route {{ i + 1 }}</li>
-</ul>
-<br/>
-<h3 *ngIf="travelTypes">Current route: {{ selectedRoute + 1 }} - Travel mode: {{ travelTypes[selectedRoute].toLowerCase() }}</h3>
-<h4>Traveling time: {{ routes[selectedRoute].time }}</h4>
-
-<div *ngIf="generatedRoutes">
-
-  <div *ngFor="let route of generatedRoutes; let i = index">
-
-      <agm-map *ngIf="selectedRoute === i" [latitude]="route[0].latitude" [longitude]="route[0].longitude" [zoom]="15">
-
-        <appSebmMap [startingPoint]="route[0]"
-                    [destination]="route[(route.length - 1)]"
-                    [wayPoints]="route"
-                    [travelMode]="travelTypes[selectedRoute]">
-
-
-        </appSebmMap>
-
-      </agm-map>
-
+<div class="info-box">
+  <div class="routes-header">
+    <h1>Routes</h1>
   </div>
-
-
-
 </div>
 
+<div class="decoration-box">  </div>
+
+  <div class="selection-box">
+    <h2>Select a route</h2>
+    <div *ngFor="let route of routes; let i = index">
+      <div class="routes" (click)="selectRoute(i)">Route {{ i + 1 }}</div>
+    </div>
+  </div>
+
+  <div class="decoration-box">  </div>
+
+  <div class="map-box">
+
+  <h3 *ngIf="travelTypes">Current route: {{ selectedRoute + 1 }} - Travel mode: {{ travelTypes[selectedRoute].toLowerCase() }}</h3>
+  <h5>Traveling time: {{ routes[selectedRoute].time }}</h5>
+
+  <div *ngIf="generatedRoutes">
+
+    <div *ngFor="let route of generatedRoutes; let i = index">
+
+        <agm-map *ngIf="selectedRoute === i" [latitude]="route[0].latitude" [longitude]="route[0].longitude" [zoom]="15">
+
+          <appSebmMap [startingPoint]="route[0]"
+                      [destination]="route[(route.length - 1)]"
+                      [wayPoints]="route"
+                      [travelMode]="travelTypes[selectedRoute]">
+
+
+          </appSebmMap>
+
+        </agm-map>
+
+    </div>
+
+
+
+  </div>
+</div>
 
 
 
