@@ -8,10 +8,14 @@
 
 <div class="map-box">
 
-<agm-map [latitude]="51.58307" [longitude]="4.7769505" [zoom]="15">
+<agm-map #gm [latitude]="51.58307" [longitude]="4.7769505" [zoom]="15">
 
-  <agm-marker *ngFor="let mural of murals" [latitude]="mural.latitude" [longitude]="mural.longitude">
-    <agm-info-window>
+  <agm-marker [label]="mural.numberOnMap.toString()"
+              *ngFor="let mural of murals"
+              [latitude]="mural.latitude"
+              [longitude]="mural.longitude"
+              (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow;">
+    <agm-info-window #infoWindow>
       <h2>{{ mural.title.en }} - {{ mural.address}}</h2>
       <img [src]="['https://api.blindwalls.gallery/' + mural.images[0].url.toLowerCase()]">
       <p>{{ mural.description.en }}</p>
