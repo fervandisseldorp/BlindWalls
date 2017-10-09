@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
-import {MuralService} from './mural.service';
-import {Mural} from './mural';
+import {MuralService} from '../../services/mural.service';
+import {Mural} from '../../models/mural';
 
 @Component({
   selector: 'app-mural-overview',

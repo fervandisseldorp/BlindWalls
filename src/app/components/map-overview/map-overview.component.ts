@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
-import { Mural } from './mural';
+import { Mural } from '../../models/mural';
 
 @Component({
   selector: 'app-map-overview',
@@ -15,7 +15,6 @@ export class MapOverviewComponent {
 
   constructor(protected storage: AsyncLocalStorage) {
     this.storage.getItem('myMurals').subscribe((data: Mural[]) => {
-      console.log('MAP-OVERVIEW: FOUND DATA: ' + data);
       this.murals = data;
     });
   }

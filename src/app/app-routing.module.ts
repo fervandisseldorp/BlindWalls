@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import {MuralDetailComponent} from './mural-detail.component';
-import {MuralOverviewComponent} from './mural-overview.component';
-import {MapOverviewComponent} from './map-overview.component';
-import {RoutesOverviewComponent} from './routes-overview.component';
+import {MuralDetailComponent} from './components/mural-detail/mural-detail.component';
+import {MuralOverviewComponent} from './components/mural-overview/mural-overview.component';
+import {MapOverviewComponent} from './components/map-overview/map-overview.component';
+import {RoutesOverviewComponent} from './components/routes-overview/routes-overview.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/muraloverview', pathMatch: 'full' },

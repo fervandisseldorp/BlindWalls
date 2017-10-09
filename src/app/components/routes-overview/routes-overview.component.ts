@@ -2,8 +2,8 @@ import {Component, EventEmitter, Output} from '@angular/core';
 
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
-import { Mural } from './mural';
-import { Route } from './route';
+import { Mural } from '../../models/mural';
+import { Route } from '../../models/route';
 
 
 @Component({
@@ -30,12 +30,10 @@ export class RoutesOverviewComponent {
   constructor(protected storage: AsyncLocalStorage) {
 
     this.storage.getItem('myMurals').subscribe((muralsData: Mural[]) => {
-      console.log('ROUTER-OVERVIEW: Received muraldata');
       this.murals = muralsData;
     });
 
     this.storage.getItem('myRoutes').subscribe((routesData: Route[]) => {
-      console.log('ROUTER-OVERVIEW: Received routedata');
       this.routes = routesData;
       this.generateRoutes();
     });
@@ -44,16 +42,13 @@ export class RoutesOverviewComponent {
 
   selectRoute(selectedRouteNumber: number) {
     this.selectedRoute = selectedRouteNumber;
-    console.log('ROUTES-OVERVIEW: Route changed to: ' + this.selectedRoute);
     this.currentRoute.emit(this.selectedRoute);
   }
 
 
   generateRoutes() {
-    console.log('REACHED generateRoutes()');
 
     this.routes.forEach((route, j) => {
-      console.log(route);
 
       this.tempRoutes = [];
 
@@ -72,7 +67,6 @@ export class RoutesOverviewComponent {
         this.tempRoutes.push(this.murals.find(mural => mural.id === point.muralId));
       });
 
-      console.log('GenerateRoute() - Created Route size: ' + this.tempRoutes.length + ' Pushing to: ' + j);
       this.generatedRoutes.push(this.tempRoutes);
 
     });

@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
-import {Mural} from './mural';
+import {Mural} from '../models/mural';
 import {AsyncLocalStorage} from 'angular-async-local-storage';
 
 
@@ -16,7 +16,6 @@ export class MuralService {
   constructor(private http: HttpClient, private storage: AsyncLocalStorage) { }
 
   getMurals(token: string): Observable<Mural[]> {
-    console.log('LOCAL-STORAGE: FOUND TOKEN AT MURAL-SERVICE ' + token);
 
     const headerObject = new Headers({
       'Content-Type': 'application/json',

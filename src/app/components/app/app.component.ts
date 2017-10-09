@@ -2,13 +2,13 @@ import {Component, OnInit} from '@angular/core';
 
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
-import {MuralService} from './mural.service';
-import {RoutesService} from './routes.service';
-import {TokenService} from './token.service';
+import {MuralService} from '../../services/mural.service';
+import {RoutesService} from '../../services/routes.service';
+import {TokenService} from '../../services/token.service';
 
-import {Mural} from './mural';
-import {Route} from './route';
-import {Token} from './token';
+import {Mural} from '../../models/mural';
+import {Route} from '../../models/route';
+import {Token} from '../../models/token';
 
 
 @Component({
@@ -29,24 +29,18 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.tokenService.getToken()
       .subscribe((tokenData: Token) => {
-          console.log(tokenData.token);
 
           this.storage.setItem('myTokens', tokenData).subscribe(() => {
-            console.log('LOCAL-STORAGE: FINISHED SAVING TOKEN DATA');
 
           this.muralService.getMurals(tokenData.token)
             .subscribe((muralData: Mural[]) => {
                 this.storage.setItem('myMurals', muralData).subscribe(() => {
-                  console.log('LOCAL-STORAGE: FINISHED SAVING MURAL DATA');
-                  console.log(muralData);
                 });
               },
               err => console.log(err));
             this.routesService.getRoutes(tokenData.token)
               .subscribe((routeData: Route[]) => {
                   this.storage.setItem('myRoutes', routeData).subscribe(() => {
-                    console.log('LOCAL-STORAGE: FINISHED SAVING ROUTES DATA');
-                    console.log(routeData);
                   });
                 },
                 err => console.log(err));

@@ -1,8 +1,8 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit } from '@angular/core';
 
-import {MuralService} from './mural.service';
-import {Mural} from './mural';
+import {MuralService} from '../../services/mural.service';
+import {Mural} from '../../models/mural';
 import {ActivatedRoute, ParamMap} from '@angular/router';
 
 @Component({
