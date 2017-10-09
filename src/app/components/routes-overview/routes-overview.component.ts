@@ -64,7 +64,12 @@ export class RoutesOverviewComponent implements OnInit {
           this.tempRoutes = [];
         }
 
-        this.tempRoutes.push(this.murals.find(mural => mural.id === point.muralId));
+        const foundMural = this.murals.find(mural => mural.id === point.muralId);
+
+        if (foundMural !== undefined) {
+          this.tempRoutes.push(foundMural);
+        }
+
       });
 
       this.generatedRoutes.push(this.tempRoutes);
