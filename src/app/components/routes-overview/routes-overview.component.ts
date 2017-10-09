@@ -60,10 +60,6 @@ export class RoutesOverviewComponent implements OnInit {
 
       route.points.forEach((point, k) => {
 
-        if (k === route.points.length) {
-          this.tempRoutes = [];
-        }
-
         const foundMural = this.murals.find(mural => mural.id === point.muralId);
 
         if (foundMural !== undefined) {
