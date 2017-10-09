@@ -13,12 +13,25 @@ import {Mural} from '../../models/mural';
 
 export class MuralOverviewComponent implements OnInit {
   murals: Mural[];
+  tempMurals: Mural[];
 
   constructor(private muralService: MuralService, protected storage: AsyncLocalStorage) { }
 
   ngOnInit(): void {
     this.storage.getItem('myMurals').subscribe((data: Mural[]) => {
       this.murals = data;
+    });
+    this.tempMurals = new Array<Mural>();
+  }
+
+  search(term: string): void {
+    console.log('reached the search');
+    this.tempMurals = [];
+
+    this.murals.forEach((m, i) => {
+      if (m.title.en === term || m.author === term) {
+        this.tempMurals.push(m);
+      }
     });
   }
 
