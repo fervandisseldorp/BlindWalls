@@ -11,16 +11,15 @@ import {Mural} from '../../models/mural';
   styleUrls: [ './mural-overview.component.css' ]
 })
 
-export class MuralOverviewComponent {
+export class MuralOverviewComponent implements OnInit {
   murals: Mural[];
 
-  constructor(private muralService: MuralService, protected storage: AsyncLocalStorage) {
+  constructor(private muralService: MuralService, protected storage: AsyncLocalStorage) { }
 
+  ngOnInit(): void {
     this.storage.getItem('myMurals').subscribe((data: Mural[]) => {
       this.murals = data;
     });
-
   }
-
 
 }

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 import { AsyncLocalStorage } from 'angular-async-local-storage';
 
@@ -11,7 +11,7 @@ import { Route } from '../../models/route';
   templateUrl: './routes-overview.component.html',
   styleUrls: ['./routes-overview.component.css']
 })
-export class RoutesOverviewComponent {
+export class RoutesOverviewComponent implements OnInit {
 
   // Walls for information
   murals: Mural[];
@@ -27,8 +27,9 @@ export class RoutesOverviewComponent {
   selectedRoute = 0;
 
 
-  constructor(protected storage: AsyncLocalStorage) {
+  constructor(protected storage: AsyncLocalStorage) { }
 
+  ngOnInit(): void {
     this.storage.getItem('myMurals').subscribe((muralsData: Mural[]) => {
       this.murals = muralsData;
     });
@@ -37,7 +38,6 @@ export class RoutesOverviewComponent {
       this.routes = routesData;
       this.generateRoutes();
     });
-
   }
 
   selectRoute(selectedRouteNumber: number) {
